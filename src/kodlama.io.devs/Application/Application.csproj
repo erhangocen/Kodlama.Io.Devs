@@ -17,8 +17,10 @@
 		<PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
 	</ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\ProgrammingLanguages\Constants\" />
-  </ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Features\AppUsers\Commands\" />
+	  <Folder Include="Features\AppUsers\Rules\" />
+	  <Folder Include="Features\AppUsers\Queries\" />
+	</ItemGroup>
 
 </Project>

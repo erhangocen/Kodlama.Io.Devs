@@ -8,7 +8,7 @@ public class EmailAuthenticator : Entity
     public string? ActivationKey { get; set; }
     public bool IsVerified { get; set; }
 
-    public virtual User User { get; set; }
+    public virtual User BaseUser { get; set; }
 
     public EmailAuthenticator()
     {

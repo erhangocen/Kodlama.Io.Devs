@@ -130,4 +130,14 @@ public class EfRepositoryBase<TEntity, TContext> : IAsyncRepository<TEntity>, IR
         Context.SaveChanges();
         return entity;
     }
+
+    public async Task<TEntity?> GetByIdAsync(int id, Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null, bool enableTracking = true)
+    {
+        var entity = Query();
+        if (enableTracking is false)
+            entity = entity.AsNoTracking();
+        if (include is not null)
+            entity = include(entity);
+        return await entity.FirstOrDefaultAsync(x => x.Id.Equals(id));
+    }
 }

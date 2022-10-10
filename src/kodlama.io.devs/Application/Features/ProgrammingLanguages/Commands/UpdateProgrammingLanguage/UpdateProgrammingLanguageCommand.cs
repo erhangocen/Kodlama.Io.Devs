@@ -32,6 +32,8 @@ namespace Application.Features.ProgrammingLanguages.Commands.UpdateProgrammingLa
 
             public async Task<UpdatedProgrammingLanguageDto> Handle(UpdateProgrammingLanguageCommand request, CancellationToken cancellationToken)
             {
+                await _programmingLanguageBusinessRules.ProgrammingLanguageMustExistWhenRequested(request.Id);
+
                 await _programmingLanguageBusinessRules.ProgrammingLanguageNameCanNotBeDuplicatedWhenInseted(request.Name);
 
                 ProgrammingLanguage mappedProgramingLanguage = _mapper.Map<ProgrammingLanguage>(request);
